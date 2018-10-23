@@ -1,0 +1,12 @@
+server:
+  port: 8070
+  servlet:
+    context-path: /dfyoo
+spring:
+  session:
+    store-type: none
+dfyoo:
+  ticket:
+    baseurl: https://doptest-api.dfyoo.com
+    apikey: tickettest
+    secretkey: aaaaaaaa
