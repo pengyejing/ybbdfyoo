@@ -2,6 +2,9 @@ package com.zachwang.ybbdfyoo.utility;
 
 public class Constants {
 
+  private Constants() {
+  }
+
   public static final String GET_METHOD = "GET";
   public static final String POST_METHOD = "POST";
   public static final String CONTENTTYPE = "contentType";
@@ -26,7 +29,6 @@ public class Constants {
   public static final String FORMAT_YYYY_MM_DD_HH_MM = "yyyy-MM-dd HH:mm";
   public static final String FORMAT_YYYYMMDDHHMMSS = "yyyyMMddHHmmss";
   public static final String FORMAT_YYYYMMDD_HH_MM_SS = "yyyyMMdd HH:mm:ss";
-  public static String[] weeks = {"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
   public static final String YEAR = "year";
   public static final String MONTH = "month";
   public static final String DAY = "day";
@@ -41,4 +43,18 @@ public class Constants {
   public static final String TICKET_PRIVILEGE_TICKET_LIST = "/Ticket/privilegeTicketList";
   public static final String TICKET_DETAIL = "/Ticket/detail";
   public static final String TICKET_CREATE_ORDER_NEW = "/Ticket/createOrderNew";
+  public static final String TICKET_CANCEL_ORDER = "/Ticket/cancelOrder";
+  public static final String TICKET_SUBMIT_ORDER = "/Ticket/submitOrder";
+  public static final String TICKET_ORDER_DETAIL = "/Ticket/orderDetail";
+  public static final String TICKET_ORDER_STATUS = "/Ticket/orderStatus";
+  public static final String TICKET_VERIFY_ORDER = "/Ticket/verifyOrder";
+  public static final String TICKET_CAN_REFUND = "/Ticket/canRefund";
+  public static final String TICKET_TUI_PIAO = "/Ticket/tuiPiao";
+
+  // Public
+  public static final String PUBLIC_SECOND_CATEGORY = "/Public/second/category";
+  public static final String PUBLIC_DEST_CATEGORY = "/Public/dest/category";
+  public static final String PUBLIC_DEST_GROUP_CATEGORY = "/Public/destGroup/category";
+  public static final String PUBLIC_START_PRICE = "/Public/start/price";
+  public static final String PUBLIC_BILL_QUERY = "/Public/bill/query";
 }

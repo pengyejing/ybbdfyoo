@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 public class SignatureUtil {
   private static final Logger LOG = LoggerFactory.getLogger(SignatureUtil.class);
 
-  public SignatureUtil() {
+  private SignatureUtil() {
   }
 
   /**
@@ -34,7 +34,8 @@ public class SignatureUtil {
     propertyFilter(null, data, keyValueList);
     Collections.sort(keyValueList);
     String formatText = StringUtils.join(keyValueList, Constants.AND_SYMBOL);
-    String finalText = secretKey + Constants.AND_SYMBOL + formatText + Constants.AND_SYMBOL + secretKey;
+    String finalText = secretKey + Constants.AND_SYMBOL + formatText
+        + Constants.AND_SYMBOL + secretKey;
     return getMd5(finalText).toUpperCase();
   }
 

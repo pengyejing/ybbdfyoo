@@ -17,5 +17,5 @@ public class TicketPrivilegeTicketListResponse extends ResponseModel {
   private Integer totalCount;
   @Getter
   @Setter
-  private Ticket[] data;
+  private Ticket[] rows;
 }

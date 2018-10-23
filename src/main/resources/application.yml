@@ -8,5 +8,6 @@ spring:
 dfyoo:
   ticket:
     baseurl: https://doptest-api.dfyoo.com
+    acctid: 100012
     apikey: tickettest
     secretkey: aaaaaaaa

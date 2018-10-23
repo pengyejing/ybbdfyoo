@@ -4,14 +4,15 @@ import com.alibaba.fastjson.JSONObject;
 import com.zachwang.ybbdfyoo.utility.Constants;
 import com.zachwang.ybbdfyoo.utility.DateUtil;
 import com.zachwang.ybbdfyoo.utility.SignatureUtil;
+
+import java.util.Date;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.Date;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -22,6 +23,9 @@ public class YbbdfyooApplicationTests {
   public void contextLoads() {
   }
 
+  /**
+   * 测试签名生成.
+   */
   public void signatureUtilTest01() {
     String value = "{\"apiKey\":[\"234\",\"2345\"],\"data\":{\"productNewLineTypeId\":9,"
         + "\"departCityName\":\"北京\",\"destGroupId\":19,\"productId\":\"210134278\","

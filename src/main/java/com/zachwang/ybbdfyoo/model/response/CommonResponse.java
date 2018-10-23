@@ -1,4 +1,4 @@
-package com.zachwang.ybbdfyoo.model;
+package com.zachwang.ybbdfyoo.model.response;
 
 import java.io.Serializable;
 
@@ -11,18 +11,18 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class PriceCalendar implements Serializable {
-  private static final long serialVersionUID = -8814569116056433774L;
+public class CommonResponse<E extends ResponseModel> implements Serializable {
+  private static final long serialVersionUID = 2032357233646963821L;
   @Getter
   @Setter
-  private Integer startPrice;
+  private Boolean success;
   @Getter
   @Setter
-  private Integer salePrice;
+  private String msg;
   @Getter
   @Setter
-  private String departDate;
+  private Integer errorCode;
   @Getter
   @Setter
-  private Integer childPrice;
+  private E data;
 }

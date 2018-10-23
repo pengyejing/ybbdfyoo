@@ -98,6 +98,15 @@ public class HttpRequestService {
     return requestParam.toString();
   }
 
+  /**
+   * 发送POST请求.
+   *
+   * @param url          url
+   * @param requestModel POST请求参数
+   * @param apiKey       apiKey
+   * @param secretKey    secretKey
+   * @return POST请求响应
+   */
   public String doPost(String url, RequestModel requestModel,
                        String apiKey, String secretKey) {
     try {
@@ -110,10 +119,10 @@ public class HttpRequestService {
   }
 
   /**
-   * 发送POST请求.
+   * 发送POST请求的请求参数.
    *
    * @param url       url
-   * @param paramMap  POST请求参数
+   * @param paramMap  请求参数
    * @param apiKey    apiKey
    * @param secretKey secretKey
    * @return POST请求响应

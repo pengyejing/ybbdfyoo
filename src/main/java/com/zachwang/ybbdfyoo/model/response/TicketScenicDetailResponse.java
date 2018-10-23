@@ -53,5 +53,8 @@ public class TicketScenicDetailResponse extends ResponseModel {
   private String trafficBus;
   @Getter
   @Setter
+  private Ticket[] ticketList;
+  @Getter
+  @Setter
   private Ticket[] disTickets;
 }

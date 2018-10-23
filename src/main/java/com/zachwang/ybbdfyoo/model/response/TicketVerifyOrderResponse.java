@@ -13,6 +13,9 @@ public class TicketVerifyOrderResponse extends ResponseModel {
   private static final long serialVersionUID = -3537027808994814697L;
   @Getter
   @Setter
+  private Integer retryStatus;
+  @Getter
+  @Setter
   private Boolean supportVerify;
   @Getter
   @Setter
