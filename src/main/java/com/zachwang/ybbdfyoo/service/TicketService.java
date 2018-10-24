@@ -37,30 +37,37 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TicketService {
+public class TicketService implements DfyooService {
   private static final Logger LOG = LoggerFactory.getLogger(TicketService.class);
   @Autowired
   private HttpRequestService httpRequestService;
-  @Value("${dfyoo.ticket.baseurl}")
+  @Value("${dfyoo.baseurl}")
   private String baseUrl;
-  @Value("${dfyoo.ticket.acctid}")
+  @Value("${dfyoo.acctid}")
   private String acctId;
   @Value("${dfyoo.ticket.apikey}")
   private String apiKey;
   @Value("${dfyoo.ticket.secretkey}")
   private String secretKey;
 
-  /**
-   * 生成请求的URL.
-   *
-   * @param url url
-   * @return 可以用于请求的URL
-   */
-  public String handleRequestUrl(String url) {
-    if (url.startsWith("http://") || url.startsWith("https://")) {
-      return url;
-    }
-    return baseUrl + url;
+  @Override
+  public String getBaseUrl() {
+    return baseUrl;
+  }
+
+  @Override
+  public String getAcctId() {
+    return acctId;
+  }
+
+  @Override
+  public String getApiKey() {
+    return apiKey;
+  }
+
+  @Override
+  public String getSecretKey() {
+    return secretKey;
   }
 
   /**
@@ -73,7 +80,7 @@ public class TicketService {
       TicketScenicListRequest request) {
     try {
       String responseJson = httpRequestService.doPost(
-          handleRequestUrl(Constants.TICKET_SCENIC_LIST), request, apiKey, secretKey);
+          handleRequestUrl(Constants.TICKET_SCENIC_LIST), request, getApiKey(), getSecretKey());
       return JsonConvertUtil.readValue(responseJson,
           new TypeReference<CommonResponse<TicketScenicListResponse>>() {
           });
@@ -93,7 +100,7 @@ public class TicketService {
       TicketScenicDetailRequest request) {
     try {
       String responseJson = httpRequestService.doPost(
-          handleRequestUrl(Constants.TICKET_SCENIC_DETAIL), request, apiKey, secretKey);
+          handleRequestUrl(Constants.TICKET_SCENIC_DETAIL), request, getApiKey(), getSecretKey());
       return JsonConvertUtil.readValue(responseJson,
           new TypeReference<CommonResponse<TicketScenicDetailResponse>>() {
           });
@@ -113,7 +120,8 @@ public class TicketService {
       TicketPrivilegeTicketListRequest request) {
     try {
       String responseJson = httpRequestService.doPost(
-          handleRequestUrl(Constants.TICKET_PRIVILEGE_TICKET_LIST), request, apiKey, secretKey);
+          handleRequestUrl(Constants.TICKET_PRIVILEGE_TICKET_LIST), request,
+          getApiKey(), getSecretKey());
       return JsonConvertUtil.readValue(responseJson,
           new TypeReference<CommonResponse<TicketPrivilegeTicketListResponse>>() {
           });
@@ -133,7 +141,7 @@ public class TicketService {
       TicketDetailRequest request) {
     try {
       String responseJson = httpRequestService.doPost(
-          handleRequestUrl(Constants.TICKET_DETAIL), request, apiKey, secretKey);
+          handleRequestUrl(Constants.TICKET_DETAIL), request, getApiKey(), getSecretKey());
       return JsonConvertUtil.readValue(responseJson,
           new TypeReference<CommonResponse<TicketDetailResponse>>() {
           });
@@ -153,7 +161,8 @@ public class TicketService {
       TicketCreateOrderNewRequest request) {
     try {
       String responseJson = httpRequestService.doPost(
-          handleRequestUrl(Constants.TICKET_CREATE_ORDER_NEW), request, apiKey, secretKey);
+          handleRequestUrl(Constants.TICKET_CREATE_ORDER_NEW), request,
+          getApiKey(), getSecretKey());
       return JsonConvertUtil.readValue(responseJson,
           new TypeReference<CommonResponse<TicketCreateOrderNewResponse>>() {
           });
@@ -171,7 +180,7 @@ public class TicketService {
    */
   public String cancelOrder(TicketCancelOrderRequest request) {
     return httpRequestService.doPost(
-        handleRequestUrl(Constants.TICKET_CANCEL_ORDER), request, apiKey, secretKey);
+        handleRequestUrl(Constants.TICKET_CANCEL_ORDER), request, getApiKey(), getSecretKey());
   }
 
   /**
@@ -183,9 +192,9 @@ public class TicketService {
   public CommonResponse<TicketSubmitOrderResponse> submitOrder(
       TicketSubmitOrderRequest request) {
     try {
-      request.setAcctId(acctId);
+      request.setAcctId(getAcctId());
       String responseJson = httpRequestService.doPost(
-          handleRequestUrl(Constants.TICKET_SUBMIT_ORDER), request, apiKey, secretKey);
+          handleRequestUrl(Constants.TICKET_SUBMIT_ORDER), request, getApiKey(), getSecretKey());
       return JsonConvertUtil.readValue(responseJson,
           new TypeReference<CommonResponse<TicketSubmitOrderResponse>>() {
           });
@@ -204,9 +213,9 @@ public class TicketService {
   public CommonResponse<TicketOrderDetailResponse> orderDetail(
       TicketOrderDetailRequest request) {
     try {
-      request.setAcctId(acctId);
+      request.setAcctId(getAcctId());
       String responseJson = httpRequestService.doPost(
-          handleRequestUrl(Constants.TICKET_ORDER_DETAIL), request, apiKey, secretKey);
+          handleRequestUrl(Constants.TICKET_ORDER_DETAIL), request, getApiKey(), getSecretKey());
       return JsonConvertUtil.readValue(responseJson,
           new TypeReference<CommonResponse<TicketOrderDetailResponse>>() {
           });
@@ -225,9 +234,9 @@ public class TicketService {
   public CommonResponse<TicketOrderStatusResponse> orderStatus(
       TicketOrderStatusRequest request) {
     try {
-      request.setAcctId(acctId);
+      request.setAcctId(getAcctId());
       String responseJson = httpRequestService.doPost(
-          handleRequestUrl(Constants.TICKET_ORDER_STATUS), request, apiKey, secretKey);
+          handleRequestUrl(Constants.TICKET_ORDER_STATUS), request, getApiKey(), getSecretKey());
       return JsonConvertUtil.readValue(responseJson,
           new TypeReference<CommonResponse<TicketOrderStatusResponse>>() {
           });
@@ -247,7 +256,7 @@ public class TicketService {
       TicketVerifyOrderRequest request) {
     try {
       String responseJson = httpRequestService.doPost(
-          handleRequestUrl(Constants.TICKET_VERIFY_ORDER), request, apiKey, secretKey);
+          handleRequestUrl(Constants.TICKET_VERIFY_ORDER), request, getApiKey(), getSecretKey());
       return JsonConvertUtil.readValue(responseJson,
           new TypeReference<CommonResponse<TicketVerifyOrderResponse>>() {
           });
@@ -267,7 +276,7 @@ public class TicketService {
       TicketCanRefundRequest request) {
     try {
       String responseJson = httpRequestService.doPost(
-          handleRequestUrl(Constants.TICKET_CAN_REFUND), request, apiKey, secretKey);
+          handleRequestUrl(Constants.TICKET_CAN_REFUND), request, getApiKey(), getSecretKey());
       return JsonConvertUtil.readValue(responseJson,
           new TypeReference<CommonResponse<TicketCanRefundResponse>>() {
           });
@@ -287,7 +296,7 @@ public class TicketService {
       TicketTuiPiaoRequest request) {
     try {
       String responseJson = httpRequestService.doPost(
-          handleRequestUrl(Constants.TICKET_TUI_PIAO), request, apiKey, secretKey);
+          handleRequestUrl(Constants.TICKET_TUI_PIAO), request, getApiKey(), getSecretKey());
       return JsonConvertUtil.readValue(responseJson,
           new TypeReference<CommonResponse<TicketTuiPiaoResponse>>() {
           });

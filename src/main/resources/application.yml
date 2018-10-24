@@ -6,8 +6,12 @@ spring:
   session:
     store-type: none
 dfyoo:
+  baseurl: https://doptest-api.dfyoo.com
+  acctid: 100012
   ticket:
-    baseurl: https://doptest-api.dfyoo.com
-    acctid: 100012
     apikey: tickettest
+    secretkey: aaaaaaaa
+    paytype: 1
+  public:
+    apikey: publictest
     secretkey: aaaaaaaa

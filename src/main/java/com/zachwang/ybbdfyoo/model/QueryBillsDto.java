@@ -43,4 +43,7 @@ public class QueryBillsDto implements Serializable {
   @Getter
   @Setter
   private String remark;
+  @Getter
+  @Setter
+  private String custCode;
 }
